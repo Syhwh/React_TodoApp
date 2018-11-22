@@ -1,3 +1,13 @@
+
+## To Do App
+This project uses diferent comoponets in react passing state and props betwen them.
+
+![screencapture-localhost-3000-2018-11-21-21_29_15](https://user-images.githubusercontent.com/35041156/48878369-18853480-edd5-11e8-927a-54368b6c4a49.png)
+![screencapture-localhost-3000-2018-11-21-21_28_52](https://user-images.githubusercontent.com/35041156/48878370-18853480-edd5-11e8-886d-a2dc38758dcd.png)
+![screencapture-localhost-3000-2018-11-21-21_28_38](https://user-images.githubusercontent.com/35041156/48878371-191dcb00-edd5-11e8-910a-7b789de1cb32.png)
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
