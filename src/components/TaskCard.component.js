@@ -24,7 +24,7 @@ class TaskCard extends Component{
                   </div>
                   <div className="card-body">
                     <div>{this.props.description}</div> 
-                    <div>{this.props.responsible}</div>
+                    <div>< strong> {this.props.responsible}</strong></div>
                   </div>
                   <div className="card-footer">
                   <button onClick={this.props.editTodo }
