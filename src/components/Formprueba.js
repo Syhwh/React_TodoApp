@@ -1,95 +1,84 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import Modal from './Modal';
+import {Button} from './Buttons';
 
-class TodoForm extends Component{
-constructor(props){
-    super(props);
-    this.state={
+class Formprueba extends Component{
+ constructor(props){
+     super(props);
+     this.state={
         title:'',
         responsible:'',
         description: '',
-        priority: 'Low'
-    }
-    
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-}
-//componentDidMount(){
- //   console.log('estado del form', this.state)
-  //  }
+        priority: this.props.elemento.priority
+     }
+     this.handleInputChange = this.handleInputChange.bind(this);
 
+ }
 
-handleSubmit(e) {
-    e.preventDefault();
-    this.props.onAddTodo(this.state);
-    this.setState({
-        title:'',
-     responsible: '',
-     description: '',
-     priority: 'Low'
-    });
-    
-  }
-
-  handleInputChange(e) {
+ 
+handleInputChange(e) {
     const {value, name} = e.target;
     console.log(value, name);
     this.setState({
       [name]: value
     });
   }
-    render(){
-        return(
-            <div className="card">
+render()
+{
+    return(<div> 
+
+        <div className="card">
                 <div className="card-body">
-                    <h5  className="card-title">Task</h5>
-                    <form onSubmit={this.handleSubmit} className="card-body">
+                    <form className="card-body">
                     <div className="form-group">
+                    <label >Title</label>
                         <input
                         type="text"
                         name="title"
                         className="form-control"
-                        value={this.props.title || this.state.title}
+                        value={ this.state.title}
                         onChange={this.handleInputChange}
-                        placeholder="Title"
+                        placeholder={this.props.elemento.title }
                         />
                     </div>
                     <div className="form-group">
+                    <label>Responsible</label>
                         <input
                         type="text"
                         name="responsible"
                         className="form-control"
-                        value={this.props.responsible || this.state.responsible }
+                        value={this.state.responsible}
                         onChange={this.handleInputChange}
-                        placeholder="Responsible"
+                        placeholder={this.props.elemento.responsible}
                         />
                     </div>
                     <div className="form-group">
+                    <label >Description</label>
                         <textarea name="description"
                         className="form-control"
-                        value={this.props.description || this.state.description}
+                        value={this.state.description}
                         onChange={this.handleInputChange}
-                        placeholder="Description">
+                        placeholder={this.props.elemento.description}>
                         </textarea>
                     </div>
                     <div className="form-group">
+                    <label >Priority</label>
                         <select
                         name="priority"
                         className="form-control"
-                        value={this.props.priority || this.state.priority}
+                        value={this.state.priority}
                         onChange={this.handleInputChange}>
                         <option>Low</option>
                         <option>Medium</option>
                         <option>High</option>
                         </select>
                     </div>
-                    <button type="submit" className="btn btn-primary">
-                    Save
-                    </button>
-                </form>
+                    </form>
             </div>
-         </div>
-        )
-    }
-}
+            </div>
+            
+    </div>
+    );
 
-export default TodoForm ;
+}}
+export default Formprueba

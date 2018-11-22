@@ -4,31 +4,40 @@ import './App.css';
 import Navigation from './components/Navigation.component';
 import TodoForm from './components/TodoForm.component';
 import TaskCard from './components/TaskCard.component';
-import {tasks} from './models/tasks.json'
+import {tasks} from './models/tasks.json';
+import EditTaskCard from './components/EditTaskCard.component';
+//modal
+import Modal from './components/Modal';
+import {Button} from './components/Buttons';
+import ModalDialog from './components/Modal';
+import portal from './components/Modal';
+//import chainedFunction from 'chained-function';
 
 
 class App extends Component {
   constructor() {
     super();
-    this.state = {
-      tasks,
-      isEdit:false
-    }
-    this.handleAddTodo = this.handleAddTodo.bind(this);
+    this.state = { 
+      tasks,     
+      modal: {
+        name: '',
+        params: {show:false,
+            size:'xm'} },
+        task:{}
+    
+      }
+      this.closeMode = this.closeMode.bind(this);
+      this.handleAddTodo = this.handleAddTodo.bind(this);
   }
-  componentDidMount(){
-    console.log('estado del APP', this.state)
-    }
+ 
 
   handleAddTodo(task) {
     this.setState({
       tasks: [...this.state.tasks, task]
-    })
-    console.log('Estado en padre',this.state);
+    })   
   }
 
   removeTodo(index) {
-    console.log('remove functions',index);
     this.setState({
       tasks: this.state.tasks.filter((e, i) => {
         return i !== index
@@ -36,23 +45,44 @@ class App extends Component {
     });
     
   }
-
-  editTodo(id,task){
-    this.setState({isEdit:true})
-    console.log('edit functions',id);
-    console.log('Priority',task.priority);
-    console.log(this.state.isEdit);  
+   
+/*//////////////////// */
+closeMode(){
+    this.setState({
+        modal: {
+            name: '',
+            params: {
+                show:false
+            }
+        }
+    });
 }
+
+
+
+editTodo(id,task){
+    this.setState({
+          modal: {
+            name: '',
+            params: {
+                show: true,
+                size:'xm'}
+            },
+            task:task
+    });
+    console.log('en la edit',task)
+  
+}
+
   render() {
     return (
       <div className="App">
-      <Navigation number={this.state.tasks.length}/>
-       
+        <Navigation number={this.state.tasks.length}/>
        <div className="container">
        <div className="row ">
           <div className=" md-4 mt-4">
           <TodoForm onAddTodo={this.handleAddTodo}></TodoForm>
-          </div>          
+          </div>     
           <div className="col-md-8">
               <div className="row">
               {this.state.tasks.map((task, id) => {
@@ -71,6 +101,9 @@ class App extends Component {
               </div>
            </div> 
         </div>
+{/************************************************************************ */}
+        <EditTaskCard activate={this.state.modal.params.show}  editTask={this.state.task}  closeMode={this.closeMode}/>
+ 
       </div>
     );
   }
