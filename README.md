@@ -1,6 +1,6 @@
 
 ## To Do App
-This project uses diferent comoponets in react passing state and props betwen them.
+This project uses diferent componets in react passing state and props betwen them.
 
 
 
